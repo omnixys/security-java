@@ -23,12 +23,15 @@
     <properties>
         <java.version>26</java.version>
         <maven.compiler.release>26</maven.compiler.release>
-        <omnixys.commons.version>1.0.0</omnixys.commons.version>
+
+        <omnixys.commons.version>1.0.4</omnixys.commons.version>
+        <omnixys.context.version>1.0.2</omnixys.context.version>
+        <omnixys.observability.version>1.1.2</omnixys.observability.version>
     </properties>
 
     <distributionManagement>
         <repository>
-            <id>github-commons</id>
+            <id>github-security</id>
             <url>https://maven.pkg.github.com/omnixys/security-java</url>
         </repository>
     </distributionManagement>
@@ -51,6 +54,7 @@
     </repositories>
 
     <dependencies>
+
         <dependency>
             <groupId>com.omnixys</groupId>
             <artifactId>commons</artifactId>
@@ -60,13 +64,13 @@
         <dependency>
             <groupId>com.omnixys</groupId>
             <artifactId>context</artifactId>
-            <version>${omnixys.commons.version}</version>
+            <version>${omnixys.context.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.omnixys</groupId>
             <artifactId>observability</artifactId>
-            <version>${omnixys.commons.version}</version>
+            <version>${omnixys.observability.version}</version>
         </dependency>
 
         <dependency>
