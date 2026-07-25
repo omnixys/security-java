@@ -3,6 +3,12 @@
 All notable changes in this project will be documented in this file.
 
 
+## [1.0.2](https://github.com/omnixys/security-java/compare/v1.0.1...v1.0.2) (2026-07-25)
+
+### Deps
+
+* **Deps:** update observability version ([](https://github.com/omnixys/security-java/commit/153e22a471a88e3eb3e4c7419c12bc923e557629))
+
 ## [1.0.1](https://github.com/omnixys/security-java/compare/v1.0.0...v1.0.1) (2026-07-23)
 
 ### Deps
