@@ -26,7 +26,7 @@
 
         <omnixys.commons.version>1.0.4</omnixys.commons.version>
         <omnixys.context.version>1.0.2</omnixys.context.version>
-        <omnixys.observability.version>1.1.2</omnixys.observability.version>
+        <omnixys.observability.version>1.1.3</omnixys.observability.version>
     </properties>
 
     <distributionManagement>
