@@ -3,6 +3,12 @@
 All notable changes in this project will be documented in this file.
 
 
+## [2.0.0](https://github.com/omnixys/security-java/compare/v1.0.2...v2.0.0) (2026-08-03)
+
+### Security
+
+* **Security:** resolve tenant from header against tenant_ids claim ([](https://github.com/omnixys/security-java/commit/41483160b02473cd578b78ca0e46f9b3af192816))
+
 ## [1.0.2](https://github.com/omnixys/security-java/compare/v1.0.1...v1.0.2) (2026-07-25)
 
 ### Deps
