@@ -35,7 +35,13 @@ public class SecurityPrincipalResolver implements PrincipalResolver {
 
         String actorId = jwt.getClaimAsString("actor_id");
         String userId = jwt.getClaimAsString("user_id");
-        String tenantId = jwt.getClaimAsString("tenant_id");
+        List<String> tenantIds = jwt.getClaimAsStringList("tenant_ids");
+        String headerTenantId = request.getHeader("X-Tenant-Id");
+        String tenantId = null;
+        if (headerTenantId != null && !headerTenantId.isBlank() && tenantIds != null
+                && tenantIds.contains(headerTenantId)) {
+            tenantId = headerTenantId;
+        }
         String sessionId = jwt.getClaimAsString("session_id");
         String authStrength = jwt.getClaimAsString("auth_strength");
 

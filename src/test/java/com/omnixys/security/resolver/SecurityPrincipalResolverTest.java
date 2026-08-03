@@ -47,7 +47,7 @@ class SecurityPrincipalResolverTest {
                 .claim("preferred_username", "jdoe")
                 .claim("actor_id", "actor-1")
                 .claim("user_id", "user-1")
-                .claim("tenant_id", "tenant-1")
+                .claim("tenant_ids", List.of("tenant-1"))
                 .claim("session_id", "sess-1")
                 .claim("auth_strength", "phish-resistant")
                 .claim("auth_time", 1700000000L)
@@ -60,6 +60,8 @@ class SecurityPrincipalResolverTest {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        when(request.getHeader("X-Tenant-Id")).thenReturn("tenant-1");
+
         PrincipalContext result = resolver.resolve(request);
 
         assertNotNull(result);
@@ -71,6 +73,26 @@ class SecurityPrincipalResolverTest {
         assertEquals("phish-resistant", result.authStrength());
         assertEquals(1700000000000L, result.authenticatedAtEpochMs());
         assertEquals(2, result.roles().size());
+    }
+
+    @Test
+    void shouldNotResolveTenantWhenHeaderIsNotInTenantIds() {
+        Jwt jwt = Jwt.withTokenValue("token")
+                .header("alg", "RS256")
+                .subject("user123")
+                .claim("tenant_ids", List.of("tenant-1"))
+                .build();
+
+        Authentication authentication = new JwtAuthenticationToken(jwt, List.of());
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        when(request.getHeader("X-Tenant-Id")).thenReturn("tenant-2");
+
+        PrincipalContext result = resolver.resolve(request);
+
+        assertNotNull(result);
+        assertNull(result.tenantId());
     }
 
     @Test
