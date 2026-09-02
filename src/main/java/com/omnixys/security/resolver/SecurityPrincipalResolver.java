@@ -34,7 +34,10 @@ public class SecurityPrincipalResolver implements PrincipalResolver {
         }
 
         String actorId = jwt.getClaimAsString("actor_id");
-        String userId = jwt.getClaimAsString("user_id");
+        String userId = jwt.getClaimAsString("omnixys_user_id");
+        if (actorId == null || actorId.isBlank()) {
+            actorId = userId;
+        }
         List<String> tenantIds = jwt.getClaimAsStringList("tenant_ids");
         String headerTenantId = request.getHeader("X-Tenant-Id");
         String tenantId = null;

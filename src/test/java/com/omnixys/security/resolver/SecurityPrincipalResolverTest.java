@@ -46,7 +46,7 @@ class SecurityPrincipalResolverTest {
                 .subject("user123")
                 .claim("preferred_username", "jdoe")
                 .claim("actor_id", "actor-1")
-                .claim("user_id", "user-1")
+                .claim("omnixys_user_id", "user-1")
                 .claim("tenant_ids", List.of("tenant-1"))
                 .claim("session_id", "sess-1")
                 .claim("auth_strength", "phish-resistant")
@@ -73,6 +73,26 @@ class SecurityPrincipalResolverTest {
         assertEquals("phish-resistant", result.authStrength());
         assertEquals(1700000000000L, result.authenticatedAtEpochMs());
         assertEquals(2, result.roles().size());
+    }
+
+    @Test
+    void shouldFallBackActorIdToUserIdClaimWhenActorIdMissing() {
+        Jwt jwt = Jwt.withTokenValue("token")
+                .header("alg", "RS256")
+                .subject("user123")
+                .claim("omnixys_user_id", "user-1")
+                .build();
+
+        Authentication authentication = new JwtAuthenticationToken(jwt, List.of());
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        PrincipalContext result = resolver.resolve(request);
+
+        assertNotNull(result);
+        assertEquals("user123", result.subject());
+        assertEquals("user-1", result.actorId());
+        assertEquals("user-1", result.userId());
     }
 
     @Test
