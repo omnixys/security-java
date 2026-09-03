@@ -3,6 +3,28 @@
 All notable changes in this project will be documented in this file.
 
 
+## [2.1.0](https://github.com/omnixys/security-java/compare/v2.0.0...v2.1.0) (2026-09-03)
+
+### Agent
+
+* **Agent:** add repository development instructions ([](https://github.com/omnixys/security-java/commit/86af0fab12236893bb9056e430944716a9098ca2))
+
+### Ci
+
+* **Ci:** align CI structure with full workflow set, 3-job release, and pinned conventionalcommits ([](https://github.com/omnixys/security-java/commit/dec9377cee5e972543f71ae6343484a0de494d38))
+
+### Other
+
+* **Other:** Merge pull request #1 from omnixys/migration/uuid-v7 ([](https://github.com/omnixys/security-java/commit/d16f603853830e402d4425807d2cddd5729f4196)), closes [#1](https://github.com/omnixys/security-java/issues/1)
+
+### Runtime
+
+* **Runtime:** align spring boot and build toolchain to local standard ([](https://github.com/omnixys/security-java/commit/342acee5ff739b870cf345be7e733dc7c470fc45))
+
+### Security
+
+* **Security:** resolve user id from omnixys_user_id claim ([](https://github.com/omnixys/security-java/commit/c08247f66dff0f8189dceffc8e90493d11794a9e))
+
 ## [2.0.0](https://github.com/omnixys/security-java/compare/v1.0.2...v2.0.0) (2026-08-03)
 
 ### Security
